@@ -69,10 +69,11 @@ main {
   transition: transform 0.2s, box-shadow 0.2s;
   width: 100%;
   max-width: 200px;
-  height: 280px;
+  height: 320px; /* Increased height to prevent overlap */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
 .cart-item:hover {
@@ -108,6 +109,40 @@ main {
 
 .cart-item button:hover {
   background-color: #555;
+}
+
+.size-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px auto;
+  margin-top: auto; /* Ensures it aligns above the "Remove" button */
+  position: relative; /* Changed to relative for better positioning within the container */
+}
+
+.size-button {
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 35px; /* Adjusted for better text fit */
+  height: 35px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  line-height: 35px;
+}
+
+.size-button:hover {
+  background-color: #f0f0f0;
+}
+
+.size-button.active {
+  background-color: #333;
+  color: white;
+  border-color: #333;
 }
 
 footer {
@@ -165,4 +200,36 @@ footer a:hover {
   .cart-container {
     grid-template-columns: 1fr;
   }
+}
+
+.quantity-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.quantity-btn {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quantity-btn:hover {
+  background-color: #555;
+}
+
+.quantity {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 10px;
 }
