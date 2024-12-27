@@ -67,6 +67,17 @@ function loadCartItems() {
   });
 
   cartTotalElement.textContent = total;
+
+  // Add event listeners for size buttons to manage highlighting
+  const sizeButtons = document.querySelectorAll(".size-button");
+  sizeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const siblingButtons =
+        button.parentElement.querySelectorAll(".size-button");
+      siblingButtons.forEach((sibling) => sibling.classList.remove("active"));
+      button.classList.add("active");
+    });
+  });
 }
 
 // Function to update the size of an item
