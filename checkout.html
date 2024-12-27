@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Hashmi Collection</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="women.html">Womens</a>
+        <a href="men.html">Men</a>
+        <a href="kids.html">Kids</a>
+        <a href="cart.html" class="cart-button">
+          Cart (<span id="cartCount">0</span>)
+        </a>
+        <a href="contact-us.html">Contact Us</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="checkout-section">
+        <h2 style="font-size: 36px">Checkout</h2>
+        <form id="checkoutForm">
+          <div class="form-group">
+            <label for="fullName" style="font-size: 20px">Full Name</label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              style="font-size: 18px"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email" style="font-size: 20px">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              style="font-size: 18px"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="address" style="font-size: 20px"
+              >Shipping Address</label
+            >
+            <textarea
+              id="address"
+              name="address"
+              rows="3"
+              style="font-size: 18px"
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="paymentMethod" style="font-size: 20px"
+              >Payment Method</label
+            >
+            <select
+              id="paymentMethod"
+              name="paymentMethod"
+              style="font-size: 18px"
+              required
+            >
+              <option value="creditCard">Credit Card</option>
+              <option value="debitCard">Debit Card</option>
+              <option value="upi">UPI</option>
+              <option value="cod">Cash on Delivery</option>
+            </select>
+          </div>
+
+          <div class="order-summary">
+            <h3 style="font-size: 24px">Order Summary</h3>
+            <div id="orderSummaryItems" style="font-size: 18px">
+              <!-- Order items will be dynamically loaded -->
+            </div>
+            <div class="order-total" style="font-size: 22px">
+              <strong>Total: ₹<span id="orderTotal">0</span></strong>
+            </div>
+          </div>
+
+          <button type="submit" class="checkout-button" style="font-size: 20px">
+            Place Order
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Hashmi Collection. All rights reserved.</p>
+      <p>
+        <a href="privacy-policy.html">Privacy Policy</a> |
+        <a href="terms-of-service.html">Terms of Service</a> |
+        <a href="contact-us.html">Contact Us</a>
+      </p>
+    </footer>
+    <script src="checkout.js"></script>
+  </body>
+</html>

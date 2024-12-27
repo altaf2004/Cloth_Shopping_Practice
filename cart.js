@@ -1,13 +1,11 @@
-// Variables to hold cart data
+// Retrieve cart data from local storage or initialize an empty cart
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// Function to update the cart count
+// Function to update the cart count in the navigation bar
 function updateCartCount() {
   const cartCount = document.getElementById("cartCount");
-  cartCount.textContent = cart.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
+  const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
+  cartCount.textContent = itemCount;
 }
 
 // Function to add an item to the cart
@@ -16,13 +14,26 @@ function addToCart(itemName, itemPrice) {
   if (existingItem) {
     existingItem.quantity += 1;
   } else {
-    cart.push({ name: itemName, price: itemPrice, quantity: 1, size: "L" }); // Default size L
+    cart.push({ name: itemName, price: itemPrice, quantity: 1, size: "L" }); // Default size is L
   }
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
 }
 
-// Function to load cart items into the cart.html page
+// Bind "Add to Cart" buttons on the homepage
+function initializeAddToCartButtons() {
+  const addToCartButtons = document.querySelectorAll(".add-to-cart");
+  addToCartButtons.forEach((button, index) => {
+    const itemElement = button.parentElement;
+    const itemName = itemElement.querySelector("p").textContent; // Get product name
+    const itemPrice = parseInt(
+      itemElement.querySelector(".price").textContent.replace("₹", "")
+    ); // Get product price
+    button.addEventListener("click", () => addToCart(itemName, itemPrice));
+  });
+}
+
+// Function to load cart items (for cart.html)
 function loadCartItems() {
   const cartItemsContainer = document.getElementById("cartItemsContainer");
   const cartTotalElement = document.getElementById("cartTotal");
@@ -58,7 +69,7 @@ function loadCartItems() {
   cartTotalElement.textContent = total;
 }
 
-// Function to update size
+// Function to update the size of an item
 function updateSize(index, newSize) {
   cart[index].size = newSize;
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -73,20 +84,11 @@ function removeFromCart(index) {
   updateCartCount();
 }
 
-// Event listeners for adding items
-document.querySelectorAll(".add-to-cart").forEach((button) => {
-  button.addEventListener("click", () => {
-    const itemElement = button.closest(".cart-item");
-    const itemName = itemElement.querySelector("p").textContent;
-    const itemPrice = parseInt(
-      itemElement.querySelector(".price").textContent.replace("₹", "")
-    );
-    addToCart(itemName, itemPrice);
-  });
+// Initialize the cart and "Add to Cart" buttons on page load
+document.addEventListener("DOMContentLoaded", () => {
+  initializeAddToCartButtons();
+  updateCartCount();
+  if (document.body.contains(document.getElementById("cartItemsContainer"))) {
+    loadCartItems();
+  }
 });
-
-// Initialize cart on page load
-if (document.body.contains(document.getElementById("cartItemsContainer"))) {
-  loadCartItems();
-}
-updateCartCount();
