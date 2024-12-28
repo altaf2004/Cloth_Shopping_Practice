@@ -1,0 +1,145 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  display: flex;
+  flex-direction: column; /* Ensures header, main, and footer are stacked */
+  min-height: 100vh; /* Full viewport height */
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 15px 0;
+  text-align: center;
+}
+
+header h1 {
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  padding: 5px 10px;
+  transition: background-color 0.3s;
+}
+
+nav a:hover {
+  background-color: #555;
+  border-radius: 5px;
+}
+
+main {
+  flex: 1; /* Allows the main content to take up remaining space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-section {
+  background-color: white;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  width: 100%;
+}
+
+/* For smaller screens (like mobile phones) */
+@media (max-width: 600px) {
+  .login-section {
+    width: 90%; /* Make the form take up more space on smaller screens */
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+}
