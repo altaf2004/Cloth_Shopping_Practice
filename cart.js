@@ -9,12 +9,18 @@ function updateCartCount() {
 }
 
 // Function to add an item to the cart
-function addToCart(itemName, itemPrice) {
+function addToCart(itemName, itemPrice, itemImageUrl) {
   const existingItem = cart.find((item) => item.name === itemName);
   if (existingItem) {
     existingItem.quantity += 1;
   } else {
-    cart.push({ name: itemName, price: itemPrice, quantity: 1, size: "L" }); // Default size is L
+    cart.push({
+      name: itemName,
+      price: itemPrice,
+      quantity: 1,
+      size: "L", // Default size is L
+      imageUrl: itemImageUrl, // Add image URL to cart item
+    });
   }
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
@@ -29,7 +35,11 @@ function initializeAddToCartButtons() {
     const itemPrice = parseInt(
       itemElement.querySelector(".price").textContent.replace("₹", "")
     ); // Get product price
-    button.addEventListener("click", () => addToCart(itemName, itemPrice));
+    const itemImageUrl = itemElement.querySelector("img").src; // Get product image URL
+
+    button.addEventListener("click", () =>
+      addToCart(itemName, itemPrice, itemImageUrl)
+    );
   });
 }
 
@@ -48,6 +58,7 @@ function loadCartItems() {
     cartItem.classList.add("cart-item");
 
     cartItem.innerHTML = `
+      <img src="${item.imageUrl}" alt="${item.name}" class="cart-item-image" />
       <p>${item.name} - ₹${item.price} x ${item.quantity}</p>
       <div class="size-buttons">
         <button class="size-button ${
