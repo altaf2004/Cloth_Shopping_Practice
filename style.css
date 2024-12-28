@@ -1,3 +1,4 @@
+/* Your existing styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -82,12 +83,15 @@ main {
 }
 
 .cart-item img {
-  width: 100%;
-  max-width: 180px;
-  height: auto;
-  border-radius: 10px;
+  width: 100%; /* Ensures the image takes the full width of its container */
+  height: auto; /* Maintains the aspect ratio */
+  max-width: 250px; /* Increased the maximum width */
+  max-height: 200px; /* Increased the maximum height */
+  object-fit: contain; /* Ensures the image fits without distortion */
+  border-radius: 10px; /* Keeps the rounded corners */
   margin-bottom: 10px;
 }
+
 
 .cart-item p {
   font-size: 18px;
@@ -120,8 +124,8 @@ main {
 }
 
 .size-button {
-  background-color: transparent; /* Default background color */
-  color: #333; /* Default text color */
+  background-color: transparent;
+  color: #333;
   border: 1px solid #ccc;
   border-radius: 50%;
   width: 35px;
@@ -135,13 +139,13 @@ main {
 }
 
 .size-button:hover {
-  background-color: #e0e0e0; /* Light gray for hover */
+  background-color: #e0e0e0;
 }
 
 .size-button.active {
-  background-color: #007bff; /* Blue background for active button */
-  color: white; /* White text for active button */
-  border-color: #0056b3; /* Darker blue border for active button */
+  background-color: #007bff;
+  color: white;
+  border-color: #0056b3;
 }
 
 footer {
@@ -163,7 +167,7 @@ footer a:hover {
 }
 
 .cart-button {
-  background-color: #4caf50; /* Calm green color */
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 12px 24px;
@@ -175,13 +179,13 @@ footer a:hover {
 }
 
 .cart-button:hover {
-  background-color: #45a049; /* Slightly darker green on hover */
-  transform: scale(1.05); /* Slight enlargement */
+  background-color: #45a049;
+  transform: scale(1.05);
 }
 
 .cart-button:active {
-  background-color: #3e8e41; /* Even darker green on click */
-  transform: scale(0.95); /* Slight shrink on click */
+  background-color: #3e8e41;
+  transform: scale(0.95);
 }
 
 /* Responsive Design */
